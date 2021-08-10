@@ -1,8 +1,14 @@
 import zipfile
 from shutil import copytree
 
+import sys
 import wget
 
+def bar_progress(current, total, width=80):
+  progress_message = "Downloading: %d%% [%d / %d] bytes" % (current / total * 100, current, total)
+  # Don't use print() as it will print in new line every time.
+  sys.stdout.write("\r" + progress_message)
+  sys.stdout.flush()
 
 def copy_template(name, template_name, temp_path, verbose=False):
     if verbose:
@@ -17,7 +23,7 @@ def copy_template(name, template_name, temp_path, verbose=False):
 def download(url, temp_path, verbose=False):
     if verbose:
         print("downloading from {} to tmp.zip".format(url))
-    wget.download(url, "{}/tmp.zip".format(temp_path))
+    wget.download(url, "{}/tmp.zip".format(temp_path), bar=bar_progress)
 
 
 def unzip(temp_path, verbose=False):
