@@ -1,9 +1,11 @@
 import argparse
+import tempfile
 
 from .utils import copy_template, download, unzip
 
 
 def main():
+    f = tempfile.TemporaryDirectory()
     valid_templates = [
         "actix",
         "aleph",
@@ -40,7 +42,9 @@ def main():
         )
     download(
         "https://github.com/Bournix/bouto/archive/refs/heads/main.zip",
+        f.name,
         verbose=args.verbose,
     )
-    unzip(verbose=args.verbose)
-    copy_template(args.name, args.template_name, verbose=args.verbose)
+    unzip(f.name, verbose=args.verbose)
+    copy_template(args.name, args.template_name, f.name, verbose=args.verbose)
+    f.cleanup()
