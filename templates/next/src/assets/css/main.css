@@ -1,0 +1,55 @@
+@import "~sanitize.css/sanitize.css";
+@import url("fontiran.css");
+@import "~notyf/notyf.min.css";
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(295.4deg, #212121 1.23%, #090808 100%);
+  overflow-x: hidden;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+  overflow-wrap: break-word;
+  font-family: IRANSans;
+  font-weight: 300;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea {
+  font-family: IRANSans !important;
+}
+h1 {
+  font-weight: bold;
+}
+
+.notyf__icon {
+  margin-right: unset;
+  margin-inline-end: 13px;
+}
+
+.notyf__wrapper {
+  padding-inline-end: 13px;
+  padding-right: unset;
+}
+
+.notyf {
+  top: 110px;
+}
